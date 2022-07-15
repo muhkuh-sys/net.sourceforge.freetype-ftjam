@@ -48,4 +48,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: artifacts_${{ matrix.platform.distribution-id }}_${{ matrix.platform.distribution-version }}_${{ matrix.platform.cpu-architecture }}
-        path: build/install
+        path: build/repository

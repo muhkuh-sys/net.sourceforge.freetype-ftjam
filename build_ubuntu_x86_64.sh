@@ -32,6 +32,7 @@ pushd ${BUILD_DIR}/ftjam-2.5.2/build
 cmake ..
 make
 make test
+make package
 popd
 
 # Copy the file.

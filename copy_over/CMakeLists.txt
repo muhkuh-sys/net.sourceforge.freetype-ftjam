@@ -1,10 +1,12 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.8)
 
-PROJECT("net.sourceforge.freetype-ftjam")
+PROJECT("net.sourceforge.freetype-ftjam"
+        VERSION 2.5.2.1)
 
 # Enable tests (see here for details: http://www.vtk.org/Wiki/CMake/Testing_With_CTest)
 ENABLE_TESTING()
 
+INCLUDE(cmake/platform.cmake)
 
 #----------------------------------------------------------------------------
 #
@@ -77,5 +79,18 @@ IF((${CMAKE_SYSTEM_NAME} STREQUAL "Windows") AND (${CMAKE_COMPILER_IS_GNUCC}))
 	ADD_TEST(NAME jam_MinGW_DLL_dependencies
 	         COMMAND "${PYTHON_EXECUTABLE}" ${CMAKE_HOME_DIRECTORY}/cmake/tests/mingw_dll_dependencies.py -u lua5.1 -u lua5.2 -u lua5.3 $<TARGET_FILE:TARGET_jam>)
 ENDIF((${CMAKE_SYSTEM_NAME} STREQUAL "Windows") AND (${CMAKE_COMPILER_IS_GNUCC}))
+
+#----------------------------------------------------------------------------
+#
+# Build a package for the selected platform.
+#
+
+SET(CPACK_OUTPUT_FILE_PREFIX ${CMAKE_BINARY_DIR}/../../repository/net/sourceforge/freetype/ftjam/${PROJECT_VERSION})
+SET(CPACK_INCLUDE_TOPLEVEL_DIRECTORY FALSE)
+SET(CPACK_PACKAGE_FILE_NAME "ftjam-${PROJECT_VERSION}-${JONCHKI_PLATFORM}")
+
+SET(CPACK_GENERATOR "TXZ")
+INCLUDE(CPack)
+INSTALL(TARGETS TARGET_jam DESTINATION .)
 
 #----------------------------------------------------------------------------
