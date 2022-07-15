@@ -1,0 +1,12 @@
+diff -uNr ftjam-2.5.2/expand.c ftjam-2.5.2_patched/expand.c
+--- ftjam-2.5.2/expand.c	2022-07-15 11:11:10.344147023 +0200
++++ ftjam-2.5.2_patched/expand.c	2022-07-15 11:11:27.076150069 +0200
+@@ -83,7 +83,7 @@
+ 	int depth;
+ 
+ 	if( DEBUG_VAREXP )
+-	    printf( "expand '%.*s'\n", end - in, in );
++	    printf( "expand '%.*s'\n", (int)(end - in), in );
+ 
+ 	/* This gets alot of cases: $(<) and $(>) */
+ 

@@ -1,0 +1,12 @@
+diff -uNr ftjam-2.5.2/execunix.c ftjam-2.5.2_patched/execunix.c
+--- ftjam-2.5.2/execunix.c	2022-07-15 11:09:54.764134199 +0200
++++ ftjam-2.5.2_patched/execunix.c	2022-07-15 11:10:41.632141952 +0200
+@@ -237,7 +237,7 @@
+ # else
+ 	if ((pid = vfork()) == 0) 
+    	{
+-		execvp( argv[0], argv );
++		execvp( argv[0], (char * const*)argv );
+ 		_exit(127);
+ 	}
+ # endif

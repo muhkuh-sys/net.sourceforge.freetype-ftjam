@@ -1,0 +1,12 @@
+diff -uNr ftjam-2.5.2/hash.c ftjam-2.5.2_patched/hash.c
+--- ftjam-2.5.2/hash.c	2022-07-15 11:11:49.284154227 +0200
++++ ftjam-2.5.2_patched/hash.c	2022-07-15 11:12:03.976157040 +0200
+@@ -246,7 +246,7 @@
+ 		run = here;
+ 	}
+ 
+-	printf( "%s table: %d+%d+%d (%dK+%dK) items+table+hash, %f density\n",
++	printf( "%s table: %d+%d+%d (%dK+%ldK) items+table+hash, %f density\n",
+ 		hp->name, 
+ 		count, 
+ 		hp->items.nel,

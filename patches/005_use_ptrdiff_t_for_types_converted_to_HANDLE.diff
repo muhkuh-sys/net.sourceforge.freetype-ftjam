@@ -1,0 +1,21 @@
+diff -uNr ftjam-2.5.2/execunix.c ftjam-2.5.2_patched/execunix.c
+--- ftjam-2.5.2/execunix.c	2022-07-15 13:13:02.915168884 +0200
++++ ftjam-2.5.2_patched/execunix.c	2022-07-15 13:13:40.011171967 +0200
+@@ -74,7 +74,7 @@
+ 
+ static struct
+ {
+-	int	pid; /* on win32, a real process handle */
++	ptrdiff_t	pid; /* on win32, a real process handle */
+ 	void	(*func)( void *closure, int status );
+ 	void 	*closure;
+ 
+@@ -376,7 +376,7 @@
+ 	    if ( GetExitCodeProcess(active_handles[i], &exitcode) ) {
+ 		CloseHandle(active_handles[i]);
+ 		*status = (int)((exitcode & 0xff) << 8);
+-		return (int)active_handles[i];
++		return (ptrdiff_t)active_handles[i];
+ 	    }
+ 	}
+ 

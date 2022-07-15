@@ -1,0 +1,12 @@
+diff -uNr ftjam-2.5.2/execunix.c ftjam-2.5.2_patched/execunix.c
+--- ftjam-2.5.2/execunix.c	2022-07-15 13:30:11.335407136 +0200
++++ ftjam-2.5.2_patched/execunix.c	2022-07-15 13:30:29.251412777 +0200
+@@ -222,7 +222,7 @@
+ 	/* Start the command */
+ 
+ # ifdef USE_EXECNT
+-	if( ( pid = spawnvp( P_NOWAIT, argv[0], argv ) ) == -1 )
++	if( ( pid = spawnvp( P_NOWAIT, argv[0], (char * const *)argv ) ) == -1 )
+ 	{
+ 	    perror( "spawn" );
+ 	    exit( EXITBAD );
