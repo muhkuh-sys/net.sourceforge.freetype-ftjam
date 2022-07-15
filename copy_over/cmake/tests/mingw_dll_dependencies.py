@@ -5,12 +5,15 @@ import sys
 
 
 __astrStandardDlls = [
-	'advapi32',
-	'kernel32',
-	'msvcrt',
-	'setupapi',
-	'user32',
-	'ws2_32'
+    'advapi32',
+    'crypt32',
+    'kernel32',
+    'msvcrt',
+    'secur32',
+    'setupapi',
+    'shlwapi',
+    'user32',
+    'ws2_32'
 ]
 
 
