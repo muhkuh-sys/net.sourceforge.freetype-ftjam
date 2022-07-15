@@ -13,8 +13,7 @@ INCLUDE(cmake/platform.cmake)
 # Find all packages.
 #
 
-# Python is used for some test scripts.
-FIND_PACKAGE(PythonInterp 2.7 REQUIRED)
+FIND_PACKAGE(Python3 REQUIRED COMPONENTS Interpreter)
 
 #----------------------------------------------------------------------------
 
@@ -77,7 +76,7 @@ SET_TARGET_PROPERTIES(TARGET_jam PROPERTIES OUTPUT_NAME "jam")
 IF((${CMAKE_SYSTEM_NAME} STREQUAL "Windows") AND (${CMAKE_COMPILER_IS_GNUCC}))
 	# Here are the MinGW specific tests.
 	ADD_TEST(NAME jam_MinGW_DLL_dependencies
-	         COMMAND "${PYTHON_EXECUTABLE}" ${CMAKE_HOME_DIRECTORY}/cmake/tests/mingw_dll_dependencies.py -u lua5.1 -u lua5.2 -u lua5.3 $<TARGET_FILE:TARGET_jam>)
+	         COMMAND "${Python3_EXECUTABLE}" ${CMAKE_HOME_DIRECTORY}/cmake/tests/mingw_dll_dependencies.py -u lua5.1 -u lua5.2 -u lua5.3 $<TARGET_FILE:TARGET_jam>)
 ENDIF((${CMAKE_SYSTEM_NAME} STREQUAL "Windows") AND (${CMAKE_COMPILER_IS_GNUCC}))
 
 #----------------------------------------------------------------------------
